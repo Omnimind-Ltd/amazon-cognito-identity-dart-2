@@ -264,6 +264,10 @@ class CognitoUser {
       paramsReq['UserContextData'] = getUserContextData();
     }
 
+    if (_clientSecretHash != null) {
+      authParameters['SECRET_HASH'] = _clientSecretHash;
+    }
+
     var authResult;
     try {
       authResult = await client.request('InitiateAuth', paramsReq);
